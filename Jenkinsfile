@@ -31,7 +31,7 @@ pipeline{
                     def msg=readFile('/tmp/commitID').trim()
                     
                     subject= "FDA - Build # ${currentBuild.number} - QA Deployment Successful"
-                    body="<html><body>Hi all,<br><br>FDA Container has been deployed on QA environment.<br>URL: http://172.30.70.184:8000/LoginWebApp-1/<br>${msg}<br><br>Regards,<br>DevOps Team.</body></html>"
+                    body="<html><body>Hi all,<br><br>FDA Container has been deployed on QA environment.<br>URL: http://$testServer:8000/LoginWebApp-1/<br>${msg}<br><br>Regards,<br>DevOps Team.</body></html>"
                     mail_to="santoshgoswami691@gmail.com"
                     mail bcc: '', body: "${body}", cc: '', charset: 'UTF-8', from: '',mimeType: 'text/html', replyTo: '', subject: "${subject}", to: "${mail_to}"
                     
@@ -82,12 +82,12 @@ pipeline{
 					def ver=readFile('/tmp/gitTag').trim()
                     def msg=readFile('/tmp/commitID').trim()
                     
-                    subject= "FDA - Build # ${currentBuild.number} - QA Deployment Successful"
-                    body="<html><body>Hi all,<br><br>FDA Container has been deployed on QA environment.<br>URL: http://172.30.70.184:8000/LoginWebApp-1/<br>${msg}<br><br>Regards,<br>DevOps Team.</body></html>"
+                    subject= "FDA - Build # ${currentBuild.number} - UAT Deployment Successful"
+                    body="<html><body>Hi all,<br><br>FDA Container has been deployed on UAT environment.<br>URL: http://$uatServer:8000/LoginWebApp-1/<br>${msg}<br><br>Regards,<br>DevOps Team.</body></html>"
                     mail_to="santoshgoswami691@gmail.com"
                     mail bcc: '', body: "${body}", cc: '', charset: 'UTF-8', from: '',mimeType: 'text/html', replyTo: '', subject: "${subject}", to: "${mail_to}"
                     
-                    subject= "FDA - Build # ${currentBuild.number} -- QA Revert Request"
+                    subject= "FDA - Build # ${currentBuild.number} -- UAT Revert Request"
                     body= "<html><head><meta http-equiv=Content-Type content=text/html; charset=utf-8><style>.button{background-color:red;border-color:red;border:2px solid red;padding:10px;text-align:center;}.link{display:block;color:#ffffff;font-size:12px;text-decoration:none; text-transform:uppercase;}</style></head><body><br>In order to revert to previous deployment click on below button.<br><br>Current Deployed FDA Container Version : ${ver}<br><br><table><tr><td class=button><a class=link href=#>Revert</a></td><td></td><td></td></tr></table></body></html>"
                     mail_to="santoshgoswami691@gmail.com"
                     mail bcc: '', body: "${body}", cc: '', charset: 'UTF-8', from: '',mimeType: 'text/html', replyTo: '', subject: "${subject}", to: "${mail_to}"        
@@ -98,7 +98,7 @@ pipeline{
 					script{
 						currentBuild.result = "FAILED"
 						subject= "FDA - Build # ${currentBuild.number} -- Frontend Build ${currentBuild.result}!"
-						body="<html><head></head><body>Hi all,<br><br>Some problem occurred while Deploying Docker container to QA server.<br><br>Regards,<br>DevOps Team.</body></html>"
+						body="<html><head></head><body>Hi all,<br><br>Some problem occurred while Deploying Docker container to UAT server.<br><br>Regards,<br>DevOps Team.</body></html>"
 						mail_to="santoshgoswami691@gmail.com"
 						mail bcc: '', body: "${body}", cc: '', charset: 'UTF-8', from: '',mimeType: 'text/html', replyTo: '', subject: "${subject}", to: "${mail_to}"
 						
