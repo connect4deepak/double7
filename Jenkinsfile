@@ -31,7 +31,7 @@ pipeline{
                     def msg=readFile('/tmp/commitID').trim()
                     
                     subject= "FDA - Build # ${currentBuild.number} - QA Deployment Successful"
-                    body="<html><body>Hi Santosh,<br><br>FDA Container has been deployed on QA environment.<br>URL: http://$testServer:8000/LoginWebApp-1/<br>${msg}<br><br>Regards,<br>DevOps Team.</body></html>"
+                    body="<html><body>Hi all,<br><br>FDA Container has been deployed on QA environment.<br>URL: http://$testServer:8000/LoginWebApp-1/<br>${msg}<br><br>Regards,<br>DevOps Team.</body></html>"
                     mail_to="santoshgoswami691@gmail.com"
                     mail bcc: '', body: "${body}", cc: '', charset: 'UTF-8', from: '',mimeType: 'text/html', replyTo: '', subject: "${subject}", to: "${mail_to}"
                     
